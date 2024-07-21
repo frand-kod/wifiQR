@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Akun Hotspot</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.text{
+    font-size: 12px;
+    color: #474646;
+}
+.info{
+    font-size: 12px;
+    color: #474646;
+    margin-top: -1rem;
+}
+.caution{
+    color: rgb(243, 67, 67);
+    font-weight: 700;
+}
+.account-details {
+    margin: 10px ;
+    border: .2rem dotted rgb(42, 42, 1);
+    border-radius: .75rem;
+    color: rgb(50, 50, 49);
+}
+#qrcode {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    padding: 1rem;
+    border: 2px solid rgb(31, 48, 148);
+    border-radius: .75rem;
+}
+    </style>
+
+
+    <div class="container">
+        <h1>Akun Hotspot</h1>
+        <p class="info">akun bisa dipakai selama 2 jam <br>pada 20:00 - 23:00</p>
+        <div class="account-details">
+            <p><strong>Akun : </strong> <span id="username">jam2000</span></p>
+            <p><strong>Password :</strong> <span id="password">perhari</span></p>
+        </div>
+        <div class="text">
+            <p class="text"><strong>Scan QR untuk <br>login otomatis ke 4keys Solutions</strong></p>
+        </div>
+        <div id="qrcode"></div>
+        <p class="caution">masuk ke jaringan <br>terlebih dahulu</p>
+    </div>
+
+
+    <script>
+        // Replace these with your actual hotspot URL, username, and password
+        var hotspotURL = "http://192.168.20.1/login";
+        var username = document.getElementById("username").textContent;
+        var password = document.getElementById("password").textContent;
+        
+        // Generate the login URL
+        var loginURL = `${hotspotURL}?username=${username}&password=${password}`;
+        
+        // Generate the QR code
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: loginURL,
+            width: 128,
+            height: 128,
+        });
+    </script>
+</body>
+</html>
